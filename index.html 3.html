@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-36WZQBE6G5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-36WZQBE6G5');
+</script>
+  <meta charset="UTF-8">
+  <title>Flying Pages Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, hsl(13, 84%, 87%), #fbc2eb, #a18cd1);
+      background-size: 400% 400%;
+      animation: gradientFlow 15s ease infinite;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page {
+      position: absolute;
+      width: min(280px, 80vw);
+      height: min(380px, 70vh);
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      transform: translateY(-1200px) rotate(-35deg) scale(0.7);
+      opacity: 0;
+      transition: all 0.9s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .page img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .page.show {
+      transform: translateY(0px) rotate(0deg) scale(1);
+      opacity: 1;
+    }
+
+    #nextBtn {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 18px;
+      border-radius: 30px;
+      border: none;
+      background: #ff4081;
+      color: white;
+      display: none;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    #nextBtn:hover {
+      background: #e91e63;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      animation: confetti-fall linear infinite;
+    }
+
+    @keyframes confetti-fall {
+      0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        width: 85vw;
+        height: 65vh;
+      }
+      #nextBtn {
+        font-size: 16px;
+        padding: 10px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    for (let i = 0; i < 100; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.top = '-10px';
+      c.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      c.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      c.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(c);
+    }
+  </script>
+
+  <!-- Pages with FIXED IMAGES -->
+  <div class="page" id="page1">
+    <img src="https://i.ibb.co/k2bb1MQw/red-silk-bow-kraft-christmas-gift-wrapping-paper-167042-195.jpg">
+  </div>
+
+  <div class="page" id="page2">
+    <img src="https://i.ibb.co/tP2QNQWR/Whats-App-Image-2025-11-26-at-12-16-44-8359b656.jpg">
+  </div>
+
+  <button id="nextBtn" onclick="goToNext()"> click for gift</button>
+
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const nextBtn = document.getElementById('nextBtn');
+    let current = 0;
+
+    function showNextPage() {
+      if (current < pages.length) {
+        pages[current].classList.add('show');
+
+        pages[current].addEventListener('click', () => {
+          pages[current].style.opacity = 0;
+          pages[current].style.transform = "translateY(-1200px) rotate(35deg) scale(0.7)";
+          current++;
+          setTimeout(showNextPage, 600);
+        });
+
+      } else {
+        nextBtn.style.display = "block";
+      }
+    }
+
+    function goToNext() {
+      window.location.href = "https://m4-ashy.vercel.app/";
+    }
+
+    showNextPage();
+  </script>
+</script>
+</body>
+</html>
